@@ -7,16 +7,15 @@ print"\t0110100001100101011011000110110001101111"
 print"============================================================"
 
 
-userInput = input()
-
-
 def dec2bin(decimal):
     decimal = int(decimal)
+
     result = ''
     while decimal > 0:
         binary = decimal % 2
         result += str(binary)
         decimal = decimal//2
+
     return result[::-1]
 
 
@@ -34,11 +33,24 @@ def bin2dec(binary):
     return result
 
 
-def numberChecker(number):
-    int(number)
-    for elem in number:
-        if elem == 0 or elem == 1:
-            pass
+def caseSwitcher(param):
+    case, arguments = param.split()
+    if case == "dec":
+        result = dec2bin(arguments)
+        return result
+    elif case == 'bin':
+        result = bin2dec(arguments)
+        return result
+    else:
+        return 'Not configured case'
 
 
-print(dec2bin(userInput))
+def main():
+    userInput = input()
+    answer = caseSwitcher(userInput)
+    print(answer)
+
+
+if __name__ == "__main__":
+    main()
+
